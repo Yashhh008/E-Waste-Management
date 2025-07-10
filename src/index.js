@@ -20,7 +20,10 @@ app.use((req, res, next) => {
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:3000",
+  origin: [
+    'https://e-waste-management-client.vercel.app',
+    process.env.CLIENT_URL || 'http://localhost:3000'
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -41,7 +44,10 @@ const server = http.createServer(app);
 // Socket.io setup
 const io = socketIo(server, {
   cors: {
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: [
+      'https://e-waste-management-client.vercel.app',
+      process.env.CLIENT_URL || 'http://localhost:3000'
+    ],
     methods: ["GET", "POST"],
     credentials: true
   }
